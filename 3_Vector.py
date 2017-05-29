@@ -264,7 +264,7 @@ geneSeen = []
 #outputfile.close()
 
 tempy = open('./FUNCGenes.txt', mode='wb')
-FuncMatch = open('./Gene_And_GO_Upper.txt', mode='rb')
+FuncMatch = open('./Extremophile_Genes_GO_Class.txt', mode='rb')
 FUNCoutputfile = open('./Gene_With_GO_FUNC.txt', mode='wb')
 
 tempySeen = []
@@ -280,11 +280,11 @@ for line in FuncMatch:
 
     gene = split_string[0]
 
-    lethality = split_string[-1]
-    lethality = lethality.replace("\r\n","")
+    Class = split_string[-1]
+    Class = Class.replace("\n","")
 
 
-    if (lethality == "lethal"):
+    if (Class == "Upper"):
         for line in Func:
             if line == "\n":
                 continue
@@ -299,10 +299,10 @@ for line in FuncMatch:
                 newFUNC.append(tempFUNC)
             if gene in line and gene not in tempySeen:
                 tempySeen.append(gene)
-                tempy.write(gene+",lethal\n")
+                tempy.write(gene+",Upper\n")
                 Counter = Counter +1
                 print Counter
-    if (lethality == "viable"):
+    if (Class == "Lower"):
         for line in Func:
             if line == "\n":
                 continue
@@ -318,7 +318,7 @@ for line in FuncMatch:
                 newFUNC.append(tempFUNC)
             if gene in line and gene not in tempySeen:
                 tempySeen.append(gene)
-                tempy.write(gene+",viable\n")
+                tempy.write(gene+",Lower\n")
                 Counter = Counter +1
                 print Counter
 
