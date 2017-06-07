@@ -1,5 +1,5 @@
-input = open ('./Uniprot_Genes_Lower.csv',mode='rb')
-output = open ('./Gene_And_GO_Lower.txt',mode='wb')
+input = open ('./Uniprot_Genes_Cold.csv',mode='rb')
+output = open ('./Gene_And_GO_Cold.txt',mode='wb')
 
 
 
@@ -10,5 +10,5 @@ for line in input:
         gene = data[0]
         GO_Terms = data[3]
         GO_Terms = GO_Terms.replace("; ",',')
-        output.write(gene+","+GO_Terms+",Lower\n")
+        output.write(gene+","+GO_Terms+",Cold\n")
 

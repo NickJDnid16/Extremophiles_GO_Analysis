@@ -108,7 +108,7 @@ def Duplicates(Up):
 
 debug = 0
 
-data = open('./Extremophile_Genes_GO_Class.txt', mode="rb")
+data = open('./Extremophile_Genes_GO_Class_BaseLine&Cold.txt', mode="rb")
 
 
 outputfile = open('./BinVec.txt', mode='wb')
@@ -284,25 +284,7 @@ for line in FuncMatch:
     Class = Class.replace("\n","")
 
 
-    if (Class == "Upper"):
-        for line in Func:
-            if line == "\n":
-                continue
-
-            tempFUNC = []
-            if gene in line and line not in geneSeen:
-                geneSeen.append(line)
-                line = line.strip()
-                line = line.replace("GO","GO:")
-                tempFUNC.append(str(line) + "\t1")
-                #print tempFUNC
-                newFUNC.append(tempFUNC)
-            if gene in line and gene not in tempySeen:
-                tempySeen.append(gene)
-                tempy.write(gene+",Upper\n")
-                Counter = Counter +1
-                print Counter
-    if (Class == "Lower"):
+    if (Class == "BaseLine"):
         for line in Func:
             if line == "\n":
                 continue
@@ -313,12 +295,30 @@ for line in FuncMatch:
                 line = line.strip()
                 line = line.replace("GO","GO:")
                 tempFUNC.append(str(line) + "\t0")
+                #print tempFUNC
+                newFUNC.append(tempFUNC)
+            if gene in line and gene not in tempySeen:
+                tempySeen.append(gene)
+                tempy.write(gene+",BaseLine\n")
+                Counter = Counter +1
+                print Counter
+    if (Class == "Cold"):
+        for line in Func:
+            if line == "\n":
+                continue
+
+            tempFUNC = []
+            if gene in line and line not in geneSeen:
+                geneSeen.append(line)
+                line = line.strip()
+                line = line.replace("GO","GO:")
+                tempFUNC.append(str(line) + "\t1")
 
                 #print tempFUNC
                 newFUNC.append(tempFUNC)
             if gene in line and gene not in tempySeen:
                 tempySeen.append(gene)
-                tempy.write(gene+",Lower\n")
+                tempy.write(gene+",Cold\n")
                 Counter = Counter +1
                 print Counter
 

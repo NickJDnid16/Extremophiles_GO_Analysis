@@ -25,7 +25,7 @@ for BinLine in codecs.open('./BinVec.txt',encoding='utf-8', mode='rb'):
     
     lines = lines +1
     
-    line = linecache.getline('./Extremophile_Genes_GO_Class.txt', lines)
+    line = linecache.getline('./Extremophile_Genes_GO_Class_BaseLine&Cold.txt', lines)
 
     count = 0
 
@@ -37,22 +37,22 @@ for BinLine in codecs.open('./BinVec.txt',encoding='utf-8', mode='rb'):
         length = len(Ge) -1
         if Ge[0] == Gene:
 
-            if "Upper" in Ge[length]:
-                print "Upper"
+            if "BaseLine" in Ge[length]:
+                print "BaseLine"
 
 
                 Out = ','.join(csv)
                 OutPut.write(Out.strip('\'"'))
-                OutPut.write(",Upper")
+                OutPut.write(",BaseLine")
                 OutPut.write("\n")
 
-            elif "Lower" in Ge[length]:
+            elif "Cold" in Ge[length]:
 
-                print "Lower"
+                print "Cold"
                 Out = ','.join(csv)
                 Out = Out.replace('\'','')
                 OutPut.write(Out.strip('"\''))
-                OutPut.write(",Lower")
+                OutPut.write(",Cold")
                 OutPut.write("\n")
 
 

@@ -2,7 +2,7 @@ import glob
 
 #################################Upper
 top_hit = {}
-for file in glob.glob('./Genome_Files/*.m8_Up'):
+for file in glob.glob('./Genome_Files/Under/*.m8_Cold'):
     print file
     for line in open(file,'rb'):
         timber = line.split('\t')
@@ -28,14 +28,14 @@ for k,v in top_hit.iteritems():
     else:
         unique_hits.append(v[1])
 
-output = open('Upper_genes.txt','wb')
+output = open('Cold_genes.txt','wb')
 for i in unique_hits:
     output.write(i+'\n')
 output.close()
 
 ########################################Lower
 top_hit = {}
-for file in glob.glob('./Genome_Files/*.m8'):
+for file in glob.glob('./Genome_Files/Under/*.m8'):
     print file
     for line in open(file,'rb'):
         timber = line.split('\t')
@@ -61,7 +61,7 @@ for k,v in top_hit.iteritems():
     else:
         unique_hits.append(v[1])
 
-output = open('Lower_genes.txt','wb')
+output = open('BaseLine_genes.txt','wb')
 for i in unique_hits:
     output.write(i+'\n')
 output.close()
