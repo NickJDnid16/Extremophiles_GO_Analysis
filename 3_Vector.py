@@ -108,7 +108,7 @@ def Duplicates(Up):
 
 debug = 0
 
-data = open('./Extremophile_Genes_GO_Class_BaseLine&Cold.txt', mode="rb")
+data = open('./Extremophile_Genes_GO_Class_BC_Thermophile.txt', mode="rb")
 
 
 outputfile = open('./BinVec.txt', mode='wb')
@@ -264,7 +264,7 @@ geneSeen = []
 #outputfile.close()
 
 tempy = open('./FUNCGenes.txt', mode='wb')
-FuncMatch = open('./Extremophile_Genes_GO_Class.txt', mode='rb')
+FuncMatch = open('./Extremophile_Genes_GO_Class_BC_Thermophile.txt', mode='rb')
 FUNCoutputfile = open('./Gene_With_GO_FUNC.txt', mode='wb')
 
 tempySeen = []
@@ -284,7 +284,7 @@ for line in FuncMatch:
     Class = Class.replace("\n","")
 
 
-    if (Class == "BaseLine"):
+    if (Class == "Under"):
         for line in Func:
             if line == "\n":
                 continue
@@ -299,10 +299,10 @@ for line in FuncMatch:
                 newFUNC.append(tempFUNC)
             if gene in line and gene not in tempySeen:
                 tempySeen.append(gene)
-                tempy.write(gene+",BaseLine\n")
+                tempy.write(gene+",Under\n")
                 Counter = Counter +1
                 print Counter
-    if (Class == "Cold"):
+    if (Class == "Upper"):
         for line in Func:
             if line == "\n":
                 continue
@@ -318,7 +318,7 @@ for line in FuncMatch:
                 newFUNC.append(tempFUNC)
             if gene in line and gene not in tempySeen:
                 tempySeen.append(gene)
-                tempy.write(gene+",Cold\n")
+                tempy.write(gene+",Upper\n")
                 Counter = Counter +1
                 print Counter
 
